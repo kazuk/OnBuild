@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+  <!--
+    NuGet packaging for assembly
+  -->
+  <Target Name="PackageAssemblyForNuget"
+          AfterTargets="Build">
+    <ItemGroup>
+      <NugetExe Include="$(MSBuildProjectDirectory)\..\packages\NuGet.CommandLine.*\**\Nuget.exe" />
+    </ItemGroup>
+    <ItemGroup >
+      <NuSpec Include="*.nuspec" />
+    </ItemGroup>
+    <Exec Condition="@(NuSpec)==''" Command="@(NugetExe) spec "/>
+    <Error Condition="@(NuSpec)==''" Text="Nuspec file created please edit it" />
+    <Exec 
+        Condition="@(NuSpec)!=''" 
+        Command="@(NugetExe) pack $(MSBuildProjectFile) -OutputDirectory $(TargetDir) "
+        CustomWarningRegularExpression=".*(Issue:|Description:).*"
+        LogStandardErrorAsError="true"  />
+  </Target>
+  
+</Project>
