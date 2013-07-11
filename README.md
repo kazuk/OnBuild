@@ -22,12 +22,17 @@ if you got Error "The replacement token 'description' has no value."
 
   edit Properties/AssemblyInfo.cs AssemblyDescription attribute.
 
-if you got Warning bellow edit 
+if you got Warning bellow edit nuspec for resolve.
 
   Issue: Remove sample nuspec values.
+
   Description: The value "http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE" for ProjectUrl is a sample value and should be removed.
+
   Description: The value "http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE" for LicenseUrl is a sample value and should be removed.
+
   Description: The value "http://ICON_URL_HERE_OR_DELETE_THIS_LINE" for IconUrl is a sample value and should be removed.	
+
   Description: The value "Tag1 Tag2" for Tags is a sample value and should be removed.
+
   Description: The value "Summary of changes made in this release of the package." for ReleaseNotes is a sample value and should be removed.
 
