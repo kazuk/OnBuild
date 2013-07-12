@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>OnBuild.PublishNugetPackage</id>
+    <version>1.0.0</version>
+    <authors>kazuk</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>publish nuget package to package source</description>
+    <dependencies>
+      <dependency id="NuGet.CommandLine" version="2.6.1" />
+    </dependencies>
+    <projectUrl>http://github.com/kazuk/OnBuild</projectUrl>  
+  </metadata>
+  <files>
+    <file src="OnBuild.PublishNugetPackage.targets" target="build" />
+    <file src="OnBuild.PublishNugetPackage.props" target="build" />
+    <file src="Readme.txt" target="/" />
+  </files>
+</package>

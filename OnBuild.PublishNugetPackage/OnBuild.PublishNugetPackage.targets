@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+
+  <Import
+      Condition="Exists('$(MSBuildProjectFullPath).nupublish')"
+      Project="$(MSBuildProjectFullPath).nupublish" />
+
+  <Target Name="PublishNugetPackage" AfterTargets="$(PublishRunsAfter)" Condition="$(DoNuGetPublish)">
+
+    <ItemGroup>
+      <NugetExe Condition="@(NugetExe)==''" Include="$(MSBuildProjectDirectory)\..\packages\NuGet.CommandLine.*\**\Nuget.exe" />
+    </ItemGroup>
+    
+    <ItemGroup>
+      <NuGetPackages Include="$(TargetDir)\*.nupkg" />
+    </ItemGroup>
+    
+    <Warning Condition="@(NuGetPackages)==''" 
+           Text="Nuget package not found" 
+           File="$(MSBuildProjectFile)" />
+    <Error Condition="$(NuGetPublishTarget)==''"
+           Text="Publish target not configured"
+             File="$(MSBuildProjectFile)" />
+    <!-- publish with NuGet push -->
+    <Exec Condition="!$(NuGetPublishTargetIsFileSystemSource)" 
+          Command="&quot;@(NugetExe)&quot; push @(NuGetPackages) -Source $(NuGetPublishTarget) " />
+    <!-- publish with Copy -->
+    <Copy Condition="$(NuGetPublishTargetIsFileSystemSource)" 
+          SourceFiles="@(NuGetPackages)" DestinationFolder="$(NuGetPublishTarget)" />
+  </Target>
+</Project>
