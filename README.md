@@ -47,15 +47,15 @@ PM> Install-Package OnBuild.PublishNugetPackage
 
  create file YOURPROJECTNAME.csproj.nupublish as publish settings.
 
-	<?xml version="1.0" encoding="utf-8" ?>
-	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
-		<PropertyGroup>
-		<DoNuGetPublish Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'" >true</DoNuGetPublish>
-			<PublishRunsAfter>PackageAssemblyForNuget</PublishRunsAfter>
-			<NuGetPublishTargetIsFileSystemSource>true</NuGetPublishTargetIsFileSystemSource>
-			<NuGetPublishTarget>D:\LocalRepos</NuGetPublishTarget>
-		</PropertyGroup>
-	</Project>
+	`<?xml version="1.0" encoding="utf-8" ?>`
+	`<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >`
+	`	<PropertyGroup>`
+	`	<DoNuGetPublish Condition="'$(Configuration)|$(Platform)' == 'Release|AnyCPU'" >true</DoNuGetPublish>`
+	`		<PublishRunsAfter>PackageAssemblyForNuget</PublishRunsAfter>`
+	`		<NuGetPublishTargetIsFileSystemSource>true</NuGetPublishTargetIsFileSystemSource>`
+	`		<NuGetPublishTarget>D:\LocalRepos</NuGetPublishTarget>`
+	`	</PropertyGroup>`
+	`</Project>`
 
 DoNuGetPublish : boolean, default is false, when if true executes publish,
   in sample configure. build configuration is Release|AnyCPU to publish.
