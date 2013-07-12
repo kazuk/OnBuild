@@ -9,7 +9,7 @@
     <dependencies>
       <dependency id="NuGet.CommandLine" version="2.6.1" />
     </dependencies>
-    
+    <projectUrl>http://github.com/kazuk/OnBuild</projectUrl>
   </metadata>
   <files>
     <file src="OnBuild.PackageAssemblyForNuget.targets" target="build" />
