@@ -11,11 +11,11 @@
     <ItemGroup >
       <NuSpec Include="*.nuspec" />
     </ItemGroup>
-    <Exec Condition="@(NuSpec)==''" Command="@(NugetExe) spec "/>
+    <Exec Condition="@(NuSpec)==''" Command="&quot;@(NugetExe)&quot; spec "/>
     <Error Condition="@(NuSpec)==''" Text="Nuspec file created please edit it" />
     <Exec 
         Condition="@(NuSpec)!=''" 
-        Command="@(NugetExe) pack $(MSBuildProjectFile) -OutputDirectory $(TargetDir) "
+        Command="&quot;@(NugetExe)&quot; pack $(MSBuildProjectFile) -OutputDirectory $(TargetDir) "
         CustomWarningRegularExpression=".*(Issue:|Description:).*"
         LogStandardErrorAsError="true"  />
   </Target>
