@@ -1,5 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
+
+  <UsingTask
+    TaskName="SelectLast"
+    TaskFactory="CodeTaskFactory"
+    AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
+    <ParameterGroup>
+      <Items ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
+      <Result ParameterType="System.String" Output="true" />
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System" />
+      <Using Namespace="System.Linq" />
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+    Result=Items.Last().ItemSpec;
+]]>
+      </Code>
+    </Task>
+  </UsingTask>
   <!--
     NuGet packaging for assembly
   -->
@@ -8,16 +27,20 @@
     <ItemGroup>
       <NugetExe Include="$(MSBuildProjectDirectory)\..\packages\NuGet.CommandLine.*\**\Nuget.exe" />
     </ItemGroup>
+    <SelectLast Items="@(NugetExe)" >
+      <Output PropertyName="nugetLatest" TaskParameter="Result" />
+    </SelectLast>
+    <Message Text="executing $(nugetLatest)" />
     <ItemGroup >
       <NuSpec Include="*.nuspec" />
     </ItemGroup>
-    <Exec Condition="@(NuSpec)==''" Command="&quot;@(NugetExe)&quot; spec "/>
+    <Exec Condition="@(NuSpec)==''" Command="&quot;$(nugetLatest)&quot; spec "/>
     <Error Condition="@(NuSpec)==''" Text="Nuspec file created please edit it" />
-    <Exec 
-        Condition="@(NuSpec)!=''" 
-        Command="&quot;@(NugetExe)&quot; pack $(MSBuildProjectFile) -OutputDirectory &quot;$(TargetDir)&quot; "
+    <Exec
+        Condition="@(NuSpec)!=''"
+        Command="&quot;$(nugetLatest)&quot; pack $(MSBuildProjectFile) -OutputDirectory $(TargetDir) "
         CustomWarningRegularExpression=".*(Issue:|Description:).*"
         LogStandardErrorAsError="true"  />
   </Target>
-  
+
 </Project>
