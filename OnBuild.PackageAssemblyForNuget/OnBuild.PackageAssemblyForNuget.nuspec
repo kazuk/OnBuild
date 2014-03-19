@@ -2,12 +2,12 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>OnBuild.PackageAssemblyForNuget</id>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <authors>kazuk</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>create a nuget package on build.</description>
     <dependencies>
-      <dependency id="NuGet.CommandLine" version="2.6.1" />
+      <dependency id="NuGet.CommandLine" version="2.8.0" />
     </dependencies>
     <projectUrl>http://github.com/kazuk/OnBuild</projectUrl>
     <developmentDependency>true</developmentDependency>

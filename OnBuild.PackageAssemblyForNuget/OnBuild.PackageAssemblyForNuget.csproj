@@ -54,7 +54,7 @@
   -->
   <Target Name="Package" AfterTargets="Build" Inputs="OnBuild.PackageAssemblyForNuget.nuspec;OnBuild.PackageAssemblyForNuget.targets;OnBuild.PackageAssemblyForNuget.props" Outputs="Package.log">
     <ItemGroup>
-      <NuGetExe Include="$(ProjectDir)..\packages\Nuget.CommandLine.*\**\NuGet.exe" />
+      <NuGetExe Include="$(ProjectDir)..\packages\Nuget.CommandLine.2.8.0\**\NuGet.exe" />
     </ItemGroup>
     <Exec Command="@(NuGetExe) pack OnBuild.PackageAssemblyForNuget.nuspec -OutputDirectory $(TargetDir)" />
     <ItemGroup>
