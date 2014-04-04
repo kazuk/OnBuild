@@ -38,7 +38,7 @@
     <Error Condition="@(NuSpec)==''" Text="Nuspec file created please edit it" />
     <Exec
         Condition="@(NuSpec)!=''"
-        Command="&quot;$(nugetLatest)&quot; pack $(MSBuildProjectFile) -OutputDirectory $(TargetDir) "
+        Command="&quot;$(nugetLatest)&quot; pack $(MSBuildProjectFile) -OutputDirectory &quot;$(TargetDir).&quot; "
         CustomWarningRegularExpression=".*(Issue:|Description:).*"
         LogStandardErrorAsError="true"  />
   </Target>
