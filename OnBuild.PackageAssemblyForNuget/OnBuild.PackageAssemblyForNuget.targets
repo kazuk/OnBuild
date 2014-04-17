@@ -1,10 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" >
 
+  <PropertyGroup Condition="Exists('$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll')">
+    <CodeTaskFactoryAssembly>$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll</CodeTaskFactoryAssembly>
+  </PropertyGroup>
+  <PropertyGroup Condition="Exists('$(MSBuildToolsPath)\Microsoft.Build.Tasks.v12.0.dll')">
+    <CodeTaskFactoryAssembly>$(MSBuildToolsPath)\Microsoft.Build.Tasks.v12.0.dll</CodeTaskFactoryAssembly>
+  </PropertyGroup>
+
   <UsingTask
     TaskName="SelectLast"
     TaskFactory="CodeTaskFactory"
-    AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll" >
+    AssemblyFile="$(CodeTaskFactoryAssembly)" >
     <ParameterGroup>
       <Items ParameterType="Microsoft.Build.Framework.ITaskItem[]" Required="true" />
       <Result ParameterType="System.String" Output="true" />
