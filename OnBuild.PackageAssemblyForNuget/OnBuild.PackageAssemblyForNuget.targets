@@ -33,11 +33,11 @@
   <Target Name="PackageAssemblyForNuget"
           AfterTargets="Build">
     <PropertyGroup Condition="'$(SolutionDir)'=='*Undefined*'">
-      <SolutionDir>$(MSBuildProjectDirectory)\..</SolutionDir>
+      <SolutionDir>$(MSBuildProjectDirectory)..</SolutionDir>
     </PropertyGroup>
     <!-- <Message Text="SolutionDir is $(SolutionDir) '$(SolutionDir)'==''" /> -->
     <ItemGroup>
-      <NugetExe Include="$(SolutionDir)\packages\NuGet.CommandLine.*\**\Nuget.exe" />
+      <NugetExe Include="$(SolutionDir)packages\NuGet.CommandLine.*\**\Nuget.exe" />
     </ItemGroup>
     <SelectLast Items="@(NugetExe)" >
       <Output PropertyName="nugetLatest" TaskParameter="Result" />

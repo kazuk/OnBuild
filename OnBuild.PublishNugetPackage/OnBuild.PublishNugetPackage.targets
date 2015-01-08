@@ -8,11 +8,11 @@
   <Target Name="PublishNugetPackage" AfterTargets="$(PublishRunsAfter)" Condition="$(DoNuGetPublish)">
 
     <ItemGroup>
-      <NugetExe Condition="@(NugetExe)==''" Include="$(MSBuildProjectDirectory)\..\packages\NuGet.CommandLine.*\**\Nuget.exe" />
+      <NugetExe Condition="@(NugetExe)==''" Include="$(MSBuildProjectDirectory)..\packages\NuGet.CommandLine.*\**\Nuget.exe" />
     </ItemGroup>
     
     <ItemGroup>
-      <NuGetPackages Include="$(TargetDir)\*.nupkg" />
+      <NuGetPackages Include="$(TargetDir)*.nupkg" />
     </ItemGroup>
     
     <Warning Condition="@(NuGetPackages)==''" 
