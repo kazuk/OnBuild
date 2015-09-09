@@ -7,6 +7,9 @@
   <PropertyGroup Condition="Exists('$(MSBuildToolsPath)\Microsoft.Build.Tasks.v12.0.dll')">
     <CodeTaskFactoryAssembly>$(MSBuildToolsPath)\Microsoft.Build.Tasks.v12.0.dll</CodeTaskFactoryAssembly>
   </PropertyGroup>
+  <PropertyGroup Condition="Exists('$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll')">
+    <CodeTaskFactoryAssembly>$(MSBuildToolsPath)\Microsoft.Build.Tasks.Core.dll</CodeTaskFactoryAssembly>
+  </PropertyGroup>
 
   <UsingTask
     TaskName="SelectLast"
