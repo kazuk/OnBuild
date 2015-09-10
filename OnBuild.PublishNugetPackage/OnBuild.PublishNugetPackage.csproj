@@ -45,6 +45,7 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="OnBuild.PublishNugetPackage.props" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Readme.txt" />
